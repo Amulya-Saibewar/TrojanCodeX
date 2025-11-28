@@ -1,0 +1,134 @@
+{
+  "name": "codegenie",
+  "displayName": "CodeGenie",
+  "description": "AI-powered code generation and completion with automatic media capture",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codegenie.generateSnippet",
+        "title": "Generate Intelligent Snippet (Panel Mode)"
+      },
+      {
+        "command": "codegenie.inlineGenerate",
+        "title": "Generate Intelligent Snippet (Inline Mode)"
+      },
+      {
+        "command": "codegenie.showIntelligentSnippetModes",
+        "title": "Generate Intelligent Snippet"
+      },
+      {
+        "command": "codegenie.PanelSuggestions",
+        "title": "Code Suggestion (Panel Mode)"
+      },
+      {
+        "command": "codegenie.InlineSuggestions",
+        "title": "Code Suggestion (Inline Mode)"
+      },
+      {
+        "command": "codegenie.showCodeSuggestionModes",
+        "title": "Code Suggestion"
+      },
+      {
+        "command": "codegenie.autocomplete",
+        "title": "Auto Complete (Panel Mode)"
+      },
+      {
+        "command": "codegenie.inlineAutocomplete",
+        "title": "Auto Complete (Inline Mode)"
+      },
+      {
+        "command": "codegenie.showAutocompleteModes",
+        "title": "Auto Complete"
+      },
+      {
+        "command": "codegenie.chatbotPanel",
+        "title": "Open CodeGenie Chatbot"
+      },
+      {
+        "command": "codegenie.showAboutPage",
+        "title": "About CodeGenie"
+      },
+      {
+        "command": "codegenie.inline.revertPrompt",
+        "title": "Revert to Original Prompt"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "codegenie.showCodeSuggestionModes",
+        "key": "ctrl+l",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "codegenie.showAutocompleteModes",
+        "key": "ctrl+m",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "codegenie.showIntelligentSnippetModes",
+        "key": "ctrl+shift+l",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "codegenie.showIntelligentSnippetModes",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "codegenie.showCodeSuggestionModes",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "codegenie.showAutocompleteModes",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "codegenie.inline.revertPrompt"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.105.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "express": "^5.1.0",
+    "ffmpeg-static": "^5.3.0",
+    "node-webcam": "^0.8.2",
+    "screenshot-desktop": "^1.15.3"
+  }
+}
